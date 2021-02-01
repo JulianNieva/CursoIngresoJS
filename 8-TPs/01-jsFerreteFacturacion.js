@@ -5,13 +5,66 @@ C.	ingresar tres precios de productos  y mostrar precio final (más IVA 21%).
 */
 function Sumar () 
 {
-	
+    let precio1;
+    let precio2;
+    let precio3;
+    let suma;
+
+    precio1 = document.getElementById("txtIdPrecioUno").value;
+    precio2 = document.getElementById("txtIdPrecioDos").value;
+    precio3 = document.getElementById("txtIdPrecioTres").value;
+
+    precio1 = parseInt(precio1);
+    precio2 = parseInt(precio2);
+    precio3 = parseInt(precio3);
+
+    suma = precio1 + precio2 + precio3;
+
+    alert("La suma es $ " + suma)
 }
 function Promedio () 
 {
-	
+        //Establezco las variables
+    let precio1;
+    let precio2;
+    let precio3;
+    let suma;
+    let promedio;
+        //Se obtienen los valores de las variables
+    precio1 = document.getElementById("txtIdPrecioUno").value;
+    precio2 = document.getElementById("txtIdPrecioDos").value;
+    precio3 = document.getElementById("txtIdPrecioTres").value;
+        //Convierte el valor ingresado en numeros enteros
+    precio1 = parseInt(precio1);
+    precio2 = parseInt(precio2);
+    precio3 = parseInt(precio3);
+        //Se realizan los calculos para sacar el promedio
+    suma = precio1 + precio2 + precio3;
+    promedio = suma / 3;
+
+    alert("La suma en total es $ " + promedio)
 }
 function PrecioFinal () 
 {
-	
+        //Establezco las variables
+    let precio1;
+    let precio2;
+    let precio3;
+    let suma;
+    let iva;
+    let precioFinal;
+        //Se obtienen los valores de las variables
+    precio1 = document.getElementById("txtIdPrecioUno").value;
+    precio2 = document.getElementById("txtIdPrecioDos").value;
+    precio3 = document.getElementById("txtIdPrecioTres").value;
+        //Valores pasan a numeros enteros
+    precio1 = parseInt(precio1);
+    precio2 = parseInt(precio2);
+    precio3 = parseInt(precio3);
+        //Se calcula el IVA
+    suma = precio1 + precio2 + precio3;
+    iva = suma * 21 / 100;
+    precioFinal = suma + iva;
+
+    alert("La suma es $ " + precioFinal)
 }
