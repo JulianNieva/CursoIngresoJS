@@ -9,15 +9,15 @@ function Sumar ()
     let precio2;
     let precio3;
     let suma;
-
+        //Se obtienen los valores de las variables
     precio1 = document.getElementById("txtIdPrecioUno").value;
     precio2 = document.getElementById("txtIdPrecioDos").value;
     precio3 = document.getElementById("txtIdPrecioTres").value;
-
+        //Convierte el valor ingresado en numeros enteros 
     precio1 = parseInt(precio1);
     precio2 = parseInt(precio2);
     precio3 = parseInt(precio3);
-
+        //Se calcula suma de los precios
     suma = precio1 + precio2 + precio3;
 
     alert("La suma es $ " + suma)
