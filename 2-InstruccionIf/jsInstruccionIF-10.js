@@ -1,24 +1,24 @@
 function mostrar()
 {
-	let numeroRandom;
+	let nota;
 	
-	numeroRandom = Math.floor(Math.random() * 10) + 1;
-	numeroRandom = parseInt(numeroRandom);
+	nota = Math.floor(Math.random() * 10) + 1;
+	nota = parseInt(nota);
 
-	if(numeroRandom > 8)
+	if(nota > 8)
 	{
-		alert(numeroRandom + ": EXCELENTE")
+		alert(nota + ": EXCELENTE")
 	}
 	else
 	{
-		if(numeroRandom > 3 && numeroRandom < 9)
+		if(nota > 3)
 		{
-			alert(numeroRandom + ": APROBO")
+			alert(nota + ": APROBO")
 		}
 		else
 		{
-			alert(numeroRandom + ": Vamos, la proxima se puede..")
+			alert(nota + ": Vamos, la proxima se puede..")
 		}
 	}
-	console.log(numeroRandom)
+	console.log(nota)
 }//FIN DE LA FUNCIÓN

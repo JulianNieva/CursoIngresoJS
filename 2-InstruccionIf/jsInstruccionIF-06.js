@@ -12,7 +12,7 @@ function mostrar()
 	}
 	else //En caso de que no tenga mas de 17 años inicia el else
 	{
-		if(edad > 12 && edad < 18) //Si se ingreso un numero entre el 12 y el 18 imprime este mensaje
+		if(edad > 12 ) //Si se ingreso un numero entre el 12 y el 18 imprime este mensaje
 		{
 			alert ("Usted es un adolescente");
 		}

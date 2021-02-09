@@ -8,8 +8,8 @@ function mostrar()
 
 	edad = parseInt(edad);
 
-	if(estadoCivil == "Soltero" && !(edad < 18))
+	if(edad > 17 && estadoCivil == "Soltero")
 	{
-		alert("Es soltero y NO es menor");
+		alert("Es soltero y no es menor");
 	}
 }//FIN DE LA FUNCIÓN
