@@ -3,7 +3,7 @@ Julian Leandro Nieva 1°C*/
 
 function mostrar()
 {
-	var destinoIngresado = document.getElementById("txtIdDestino").value;
+	let destinoIngresado = document.getElementById("txtIdDestino").value;
 
 	switch(destinoIngresado)
 	{

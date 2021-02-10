@@ -69,17 +69,17 @@ function CalcularPrecio ()
                     }
             
                     else 
+                    {
+                        if (marca == "FelipeLamparas")
                         {
-                            if (marca == "FelipeLamparas")
-                            {
-                                porcentaje = 10
-                            }
-                        
-                            else
-                            {
-                                porcentaje = 5
-                            }
+                            porcentaje = 10
                         }
+                        
+                        else
+                        {
+                            porcentaje = 5
+                        }
+                    }
                 }
             }   // Fin del else cantidadLamparas == 3
         } // Fin del else cantidadLamparas == 4
