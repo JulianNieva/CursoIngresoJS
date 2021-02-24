@@ -23,10 +23,10 @@ function CalcularPrecio ()
     
     marca = document.getElementById("Marca").value;
 
- precioBruto = 35 * cantidadLamparas
+    precioBruto = 35 * cantidadLamparas
 
         //A. Si compra 6 o más  lamparitas bajo consumo tiene un descuento del 50%.
-    if (cantidadLamparas > 5)
+    /*if (cantidadLamparas > 5)
     {
         porcentaje = 50
     }
@@ -83,8 +83,161 @@ function CalcularPrecio ()
                 }
             }   // Fin del else cantidadLamparas == 3
         } // Fin del else cantidadLamparas == 4
-    } // Fin del else  cantidadLamparas == 5
+    } // Fin del else  cantidadLamparas == 5*/
     
+   /* switch (cantidadLamparas)
+    {
+        case 1:
+        case 2:
+            porcentaje = 0;
+            break
+        case 3: //En caso de que el usuario ingrese 3 lamparitas, se ejecutara este bloque
+            if (marca == "ArgentinaLuz")
+            {
+                porcentaje = 15;
+            }
+            else 
+            {
+                if (marca == "FelipeLamparas")
+                {
+                    porcentaje = 10;
+                }
+                
+                else
+                {
+                    porcentaje = 5;
+                }
+            }
+            break;
+        case 4: //En caso de que el usuario ingrese 4 lamparitas, se ejecutara este bloque
+            if (marca == "ArgentinaLuz" || marca == "FelipeLamparas")
+                {
+                    porcentaje = 25;
+                }
+                else
+                {
+                    porcentaje = 20;
+                }
+            break;
+        case 5: //En caso de que el usuario ingrese 5 lamparitas, se ejecutara este bloque
+        { 
+            if(marca == "ArgentinaLuz")
+            { 
+                porcentaje = 40
+            }
+            else
+            {
+                porcentaje = 30
+            }
+            break;
+        }
+        default:    //En caso de que el usuario ingrese mas 5 lamparitas, se ejecutara este bloque
+            porcentaje = 50
+            break;
+    } */
+    
+    /*if (cantidadLamparas > 5)
+    {
+        porcentaje = 50;
+    }
+    else 
+    {
+        if(cantidadLamparas == 5)
+        { 
+            switch (marca)
+            {
+                case "ArgentinaLuz":
+                    porcentaje = 40;
+                    break;
+                default:
+                    porcentaje = 30;
+                    break;
+            }
+        }
+        else    //C. Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o “FelipeLamparas” se hace un descuento del 25 % y si es de otra marca el descuento es del 20%.
+        {
+            if (cantidadLamparas == 4)  
+            { 
+                switch (marca)
+                {
+                    case "ArgentinaLuz":
+                    case "FelipeLamparas":
+                        porcentaje = 25;
+                        break;
+                    default:
+                        porcentaje = 20;
+                        break;
+                }
+            }
+            // D. Si compra 3  lamparitas bajo consumo marca "ArgentinaLuz"  el descuento es del 15%, si es  “FelipeLamparas” se hace un descuento del 10 % y si es de otra marca un 5%.
+            else
+            {
+                if(cantidadLamparas == 3)
+                {
+                    switch (marca)
+                    {
+                        case "ArgentinaLuz":
+                            porcentaje = 15;
+                            break;
+                        case "FelipeLamparas":
+                            porcentaje = 10;
+                            break;
+                        default:
+                            porcentaje = 5;
+                            break;
+                    }
+                }
+            }   // Fin del else cantidadLamparas == 3
+        } // Fin del else cantidadLamparas == 4
+    } // Fin del else  cantidadLamparas == 5*/
+ 
+    switch (cantidadLamparas)
+    {
+        case 1:
+        case 2:
+            porcentaje = 0;
+            break;
+        case 3:
+            switch (marca)
+            {
+                case "ArgentinaLuz":
+                    porcentaje = 15;
+                    break;
+                case "FelipeLamparas":
+                    porcentaje = 10;
+                    break;
+                default:
+                    porcentaje = 5;
+                    break;
+            }
+            break;
+        case 4:
+            switch (marca)
+            {
+                case "ArgentinaLuz":
+                case "FelipeLamparas":
+                    porcentaje = 25;
+                    break;
+                default:
+                    porcentaje = 20;
+                    break;
+            }
+            break;
+        case 5:
+            switch (marca)
+            {
+                case "ArgentinaLuz":
+                    porcentaje = 40;
+                    break;
+                default:
+                    porcentaje = 30;
+                    break;
+            }
+            break;
+        default:
+            porcentaje = 50;
+            break;
+    }
     descuento = precioBruto * porcentaje / 100
     precioFinal = precioBruto - descuento;
     document.getElementById("txtIdprecioDescuento").value = precioFinal;
