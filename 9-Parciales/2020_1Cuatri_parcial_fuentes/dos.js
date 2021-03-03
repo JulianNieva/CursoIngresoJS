@@ -13,134 +13,133 @@ Julian Leandro Nieva 1°C*/
 
 function mostrar()
 {
-  let cantidadDeBolsasIngresadas;
-  let tipoDeProductoIngresado;
-  let descuento;
-  let precioPorBolsaIngresado;
-  let respuesta;
-  let porcentaje;
-  let precioParcial;
-  let acumuladorDePrecio;
-  let acumuladorCantidadBolsas;
-  let precioBruto;
-  let acumuladorDeArena;
-  let acumuladorDeCal;
-  let acumuladorDeCemento;
-  let tipoMasCaro;
-  let precioMasCaro;
+    let productoDeConstruccionIngresado;
+    let respuesta;
+    let cantidadDeBolsasIngresadas;
+    let precioPorBolsaIngresado;
+    let porcentaje;
+    let descuento;
+    let acumuladorCantidadDeBolsas;
+    let acumuladorDeBolsasCal;
+    let acumuladorDeBolsasCemento;
+    let acumuladorDeBolsasArena;
+    let tipoDeProductoMasCaro;
+    let tipoConMasCantidadDeBolsas;
+    let precioDelProductoMasCaro;
+    let banderaProductoMasCaro;
+    let precioBruto;
+    let sumaPrecioBruto;
+    let importeConDescuento;
 
-  acumuladorDePrecio = 0;
-  acumuladorCantidadBolsas = 0;
-  acumuladorDePrecio = 0;
+    acumuladorCantidadDeBolsas = 0;
+    sumaPrecioBruto = 0;
 
-  banderaDelTipoMasCaro = "Es el primero";
-  respuesta = "si";
+    acumuladorDeBolsasCal = 0;
+    acumuladorDeBolsasCemento = 0;
+    acumuladorDeBolsasArena = 0;
 
-  while(respuesta == "si")
-  {
-      tipoDeProductoIngresado = prompt ("Ingrese el tipo de producto de contruccion");
+    respuesta = "si";
+    banderaProductoMasCaro = 1;
 
-      while(isNaN(tipoDeProductoIngresado) == false || tipoDeProductoIngresado != "arena" && tipoDeProductoIngresado != "cal" && tipoDeProductoIngresado != "cemento")
+    while(respuesta == "si")
+    {
+      productoDeConstruccionIngresado = prompt("Ingrese el tipo de producto");
+      while(isNaN(productoDeConstruccionIngresado) == false || productoDeConstruccionIngresado != "arena" && productoDeConstruccionIngresado != "cal" && productoDeConstruccionIngresado != "cemento")
       {
-        tipoDeProductoIngresado = prompt ("Error. Por favor ingrese el producto de construccion: arena, cal o cemento");
+        productoDeConstruccionIngresado = prompt("Error. Por favor ingrese un producto valido. Debe ser: arena, cal o cemento");
       }
 
-      cantidadDeBolsasIngresadas = prompt("Ingrese la cantidad de bolsas de dicho producto");
-      cantidadDeBolsasIngresadas = parseInt (cantidadDeBolsasIngresadas);
-
-      while(isNaN(cantidadDeBolsasIngresadas) == true || cantidadDeBolsasIngresadas < 1)
+      cantidadDeBolsasIngresadas = prompt("Ingrese la cantidad de bolsas");
+      cantidadDeBolsasIngresadas = parseInt(cantidadDeBolsasIngresadas);
+      while(isNaN(cantidadDeBolsasIngresadas) == true)
       {
-        cantidadDeBolsasIngresadas = prompt ("Error. Ingrese un numero con la cantidad de bolsas deseadas");
+        cantidadDeBolsasIngresadas = prompt("Error. Por favor ingrese un numero valido para la cantidad de bolsas");
         cantidadDeBolsasIngresadas = parseInt(cantidadDeBolsasIngresadas);
       }
 
-      precioPorBolsaIngresado = prompt ("Ingrese el precio por bolsa");
+      precioPorBolsaIngresado = prompt("Ingrese el precio por bolsa")
       precioPorBolsaIngresado = parseInt(precioPorBolsaIngresado);
-
       while(isNaN(precioPorBolsaIngresado) == true || precioPorBolsaIngresado < 1)
       {
-        precioPorBolsaIngresado = prompt ("Error. Ingrese el precio por bolsas (mas de 0)");
+        precioPorBolsaIngresado = prompt("Error. Por favor ingrese un precio valido. Debe ser mas de 0")
         precioPorBolsaIngresado = parseInt(precioPorBolsaIngresado);
       }
-
-      acumuladorCantidadBolsas = acumuladorCantidadBolsas + cantidadDeBolsasIngresadas; // acumula la cantidad de bolsas
-      precioBruto = cantidadDeBolsasIngresadas * precioPorBolsaIngresado;
-      sumaPrecioBruto = sumaPrecioBruto + precioBruto; //suma el precio bruto
     
-      switch (tipoDeProductoIngresado)
-      {
-        case "arena":
-          acumuladorDeArena = acumuladorDeArena + cantidadDeBolsasIngresadas;
-          break;
-        case "cal":
-          acumuladorDeCal = acumuladorDeCal + cantidadDeBolsasIngresadas;
-          break;
-        case "cemento":
-          acumuladorDeCemento = acumuladorDeCemento + cantidadDeBolsasIngresadas;
-          break;
-      }
+        //El importe total a pagar , bruto sin descuento
+      acumuladorCantidadDeBolsas = acumuladorCantidadDeBolsas + cantidadDeBolsasIngresadas;
+      precioBruto = acumuladorCantidadDeBolsas * precioPorBolsaIngresado;
+      sumaPrecioBruto = sumaPrecioBruto + precioBruto;
       
-    //f) el tipo del mas caro
-
-      if(banderaDelTipoMasCaro == "Es el primero")
+      if(banderaProductoMasCaro == 1) //f) El tipo mas caro
       {
-        precioMasCaro = precioPorBolsaIngresado;
-        tipoMasCaro = tipoDeProductoIngresado;
-        banderaDelTipoMasCaro = "No es el primero";
+        tipoDeProductoMasCaro = productoDeConstruccionIngresado;
+        precioDelProductoMasCaro = precioPorBolsaIngresado;
+        banderaProductoMasCaro = 0;
       }
       else
       {
-        if (precioPorBolsaIngresado > precioMasCaro)
+        if(precioPorBolsaIngresado > precioDelProductoMasCaro)
         {
-          precioMasCaro = precioPorBolsaIngresado;
-          tipoMasCaro = tipoDeProductoIngresado;
+          tipoDeProductoMasCaro = productoDeConstruccionIngresado;
+          precioDelProductoMasCaro = precioPorBolsaIngresado;
         }
       }
       
-    respuesta = prompt("Desea continuar?");
-  }
+      switch(productoDeConstruccionIngresado) //d) Informar el tipo con mas cantidad de bolsas.
+      {
+        case "arena":
+          acumuladorDeBolsasArena = acumuladorDeBolsasArena + cantidadDeBolsasIngresadas;
+          break;
+        case "cal":
+          acumuladorDeBolsasCal = acumuladorDeBolsasCal + cantidadDeBolsasIngresadas;
+          break;
+        case "cemento":
+          acumuladorDeBolsasCemento = acumuladorDeBolsasCemento + cantidadDeBolsasIngresadas;
+          break;
+      }
+    
+      respuesta = prompt("Desea Continuar?");
+    } //FIN del while
 
-    //d) Informar el tipo con mas cantidad de bolsas.
-  if(acumuladorDeArena > acumuladorDeCal && acumuladorDeArena > acumuladorDeCemento)
-	{
-		tipoMasCantidad = "arena";
-	}
-	else
-	{
-		if(acumuladorDeCal > acumuladorDeCemento)	//uh la puta madre
-		{
-			tipoMasCantidad = "cal";
-		}
-		else
-		{
-			tipoMasCantidad = "cemento";
-		}
-	}
-
-  if(cantidadDeBolsasIngresadas > 10 && cantidadDeBolsasIngresadas < 30)
-  {
-    /*porcentaje = 15 / 100;*/
-    porcentaje = 15;
-  }
-  else
-  {
-    if(cantidadDeBolsasIngresadas > 30)
+    if(acumuladorCantidadDeBolsas > 9 && acumuladorCantidadDeBolsas < 29)
     {
-      /*porcentaje = 25 / 100;*/
-      porcentaje = 25;
+      porcentaje = 15 / 100;
     }
-  }
-
-    console.log("El precio bruto es " + precioBruto);
-
-    if(cantidadDeBolsasIngresadas > 10)
+    else
     {
-      descuento = sumaPrecioBruto * porcentaje / 100;
-      precioBruto = precioBruto - descuento;
-      console.log("El precio con descuento es " + precioBruto)
+      if(acumuladorCantidadDeBolsas > 29)
+      {
+        porcentaje = 25 / 100;
+      }
     }
 
-    console.log(tipoDeProductoIngresado);
-    console.log(cantidadDeBolsasIngresadas);
-    console.log(precioPorBolsaIngresado);
-}
+    if(acumuladorDeBolsasArena > acumuladorDeBolsasCal && acumuladorDeBolsasArena > acumuladorDeBolsasCemento)  //d) Informar el tipo con mas cantidad de bolsas.
+    {
+      tipoConMasCantidadDeBolsas = "Arena";
+    }
+    else
+    {
+      if(acumuladorDeBolsasCal > acumuladorDeBolsasCemento)
+      {
+        tipoConMasCantidadDeBolsas = "Cal";
+      }
+      else
+      {
+        tipoConMasCantidadDeBolsas = "Cemento";
+      }
+    }
+
+    if(acumuladorCantidadDeBolsas > 10) //b) el importe total a pagar con descuento(solo si corresponde)
+    {
+      descuento = sumaPrecioBruto * porcentaje;
+      importeConDescuento = sumaPrecioBruto - descuento;
+      console.log("El importe final con descuento es de: $" + importeConDescuento)
+    }
+    else
+    {
+      console.log("El importe final sin descuento es de: $" + sumaPrecioBruto);
+    }
+
+    console.log("D- El producto con mas cantidad de bolsas es: " + tipoConMasCantidadDeBolsas);
+    console.log("F- El producto mas caro es: " + tipoDeProductoMasCaro);
+}//FIN de la funcion

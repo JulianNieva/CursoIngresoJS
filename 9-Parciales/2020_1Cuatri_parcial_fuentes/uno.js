@@ -13,164 +13,152 @@ Julian Leandro Nieva 1°C*/
 
 function mostrar()
 {
-	let tipoDeProductos;
+	let tipoDeProductoIngresado;
 	let precioIngresado;
+	let	cantidadDeUnidadesIngresadas;
 	let marcaIngresada;
 	let fabricanteIngresado;
-	let contadorDeProductos;
-	let banderaDelAlcoholBarato;
-	let precioAlcoholBarato;
-	let cantidadDeAlcoholBarato;
-	let fabricanteAlcoholBarato;
-	let acumuladorDeBarbijo;
-	let acumuladorDeAlcohol;
-	let acumuladorDeJabon;
-	let contadorDeJabon;
+	let cargaDeProductosIngresados;
+	let banderaAlcoholMasBarato;
+	let alcoholMasBarato;
+	let cantidadDeUnidadesAlcoholMasBarato;
+	let fabricanteDeAlcoholMasBarato;
+	let acumuladorDeUnidadesDeJabón;
+	let acumuladorDeUnidadesDeBarbijo;
+	let acumuladorDeUnidadesAlcohol;
 	let contadorDeAlcohol;
+	let contadorDeJabon;
 	let contadorDeBarbijo;
 	let promedioConMasUnidades;
-	let tipoMasCantidad;
+	let tipoDeProductoConMasUnidades;
 
 
+	contadorDeAlcohol = 0;
 	contadorDeJabon = 0;
-	contadorDeAlcohol = 0;	
 	contadorDeBarbijo = 0;
+	
+	acumuladorDeUnidadesDeJabón = 0;
+	acumuladorDeUnidadesDeBarbijo = 0;
+	acumuladorDeUnidadesAlcohol = 0;
+	
+	banderaAlcoholMasBarato = 1;
+	cargaDeProductosIngresados = 0;
 
-	acumuladorDeAlcohol = 0;
-	acumuladorDeBarbijo = 0;
-	acumuladorDeJabon = 0;
-
-	banderaDelAlcoholBarato = 0;
-	contadorDeProductos = 0;
-
-
-	while(contadorDeProductos < 5)
+	while(cargaDeProductosIngresados < 5)
 	{
-		contadorDeProductos++;
-
-		tipoDeProductos = prompt("Por favor ingrese el tipo del producto");
-		while(isNaN(tipoDeProductos) == false || tipoDeProductos != "barbijo" && tipoDeProductos != "jabon" && tipoDeProductos != "alcohol")
+		cargaDeProductosIngresados++;
+		
+		tipoDeProductoIngresado = prompt ("Ingrese el producto. Debe ser: barbijo, jabon o alcohol");
+		while(isNaN(tipoDeProductoIngresado) == false || tipoDeProductoIngresado != "barbijo" && tipoDeProductoIngresado != "jabon" && tipoDeProductoIngresado != "alcohol")
 		{
-			tipoDeProductos= prompt("Error. Por favor ingrese el tipo de producto: barbijo , jabon o alcohol");
+			tipoDeProductoIngresado = prompt("Error. Por favor ingrese un producto valido. Debe ser: barbijo, jabon o alcohol");
 		}
 
-		precioIngresado = prompt("Ingrese el precio del producto");
+		precioIngresado = prompt("Ingrese el precio del producto")
 		precioIngresado = parseInt(precioIngresado);
-
 		while(isNaN(precioIngresado) == true || precioIngresado < 100 || precioIngresado > 300)
 		{
-			precioIngresado = prompt("Error. Por favor ingrese el precio del producto, debe ser entre 100 y 300");
+			precioIngresado = prompt("Error. Por favor ingrese un precio del producto valido, debe ser entre 100 y 300");
 			precioIngresado = parseInt(precioIngresado);
 		}
 
-		cantidadDeUnidades = prompt("Ingrese la cantidad de unidades");
-		cantidadDeUnidades = parseInt(cantidadDeUnidades);
-		while(isNaN(cantidadDeUnidades) == true || cantidadDeUnidades < 1 || cantidadDeUnidades > 1000)
+		cantidadDeUnidadesIngresadas = prompt("Ingrese la cantidad de unidades del producto");
+		cantidadDeUnidadesIngresadas = parseInt(cantidadDeUnidadesIngresadas);
+		while(isNaN(cantidadDeUnidadesIngresadas) == true || cantidadDeUnidadesIngresadas < 1 || cantidadDeUnidadesIngresadas > 1000)
 		{
-			cantidadDeUnidades = prompt("Error. Por favor ingrese la cantidad de unidades, debe ser entre 0 y 1000");
-			cantidadDeUnidades = parseInt(cantidadDeUnidades);
+			cantidadDeUnidadesIngresadas = prompt("Error. Por favor ingrese la cantidad de unidades, debe ser entre 1 y 1000");
+			cantidadDeUnidadesIngresadas = parseInt(cantidadDeUnidadesIngresadas);
 		}
 
-		marcaIngresada = prompt("Por favor ingrese la marca del producto");
+		marcaIngresada= prompt("Ingrese la marca del producto");
 		while(isNaN(marcaIngresada) == false)
 		{
-			marcaIngresada= prompt("Error. Por favor ingrese el tipo de producto: barbijo , jabón o alcohol");
+			marcaIngresada = prompt("Error. Por favor ingrese una marca del producto valido");
 		}
 
-		fabricanteIngresado = prompt("Por favor ingrese el fabricante del producto");
+		fabricanteIngresado = prompt ("Ingrese el fabricante del producto");
 		while(isNaN(fabricanteIngresado) == false)
 		{
-			fabricanteIngresado= prompt("Error. Por favor ingrese el fabricante del producto");
+			fabricanteIngresado = prompt("Error. Por favor ingrese un fabricante valido");
 		}
 
-		//a) Del más barato de los alcohol, la cantidad de unidades y el fabricante
-
-		/*if(tipoDeProductos == "alcohol")
-		{
-			if(banderaDelAlcoholBarato == 0)
+		/*if(tipoDeProductoIngresado == "alcohol") == No esta tan mal
+		{ 
+			
+			if(banderaAlcoholMasBarato == 1)	//a) Del más barato de los alcohol, la cantidad de unidades y el fabricante
 			{
-				precioAlcoholBarato = precioIngresado;
-				cantidadDeAlcohol = cantidadDeUnidades;
-				fabricanteAlcoholBarato = fabricanteIngresado;			
-				banderaDelAlcoholBarato = 1;
-			}
+				alcoholMasBarato = precioIngresado;
+				cantidadDeUnidadesAlcoholMasBarato = cantidadDeUnidadesIngresadas;
+				fabricanteDeAlcoholMasBarato = fabricanteIngresado;
+				banderaAlcoholMasBarato = 0;
+			}	
+		
 			else
 			{
-				if(precioIngresado < precioAlcoholBarato)
+				if(precioIngresado < alcoholMasBarato && tipoDeProductoIngresado == "alcohol")
 				{
-					precioAlcoholBarato = precioIngresado;
-					cantidadDeAlcohol = cantidadDeUnidades;
-					fabricanteAlcoholBarato = fabricanteIngresado;
+					alcoholMasBarato = precioIngresado;
+					cantidadDeUnidadesAlcoholMasBarato = cantidadDeUnidadesIngresadas;
+					fabricanteDeAlcoholMasBarato = fabricanteIngresado;
 				}
 			}
-		}	//Fin de alcoholBarato*/
-
-		//b) Del tipo con mas unidades, el promedio por compra
-
-		switch(tipoDeProductos)
+		} */
+		switch (tipoDeProductoIngresado)	//b) Del tipo con mas unidades, el promedio por compra
 		{
 			case "alcohol":
-				if(tipoDeProductos == "alcohol")
-		{
-			//if(banderaDelAlcoholBarato == 0) 
-			if(contadorDeAlcohol == 0)	//a) Del más barato de los alcohol, la cantidad de unidades y el fabricante
-			{
-				precioAlcoholBarato = precioIngresado;
-				cantidadDeAlcohol = cantidadDeUnidades;
-				fabricanteAlcoholBarato = fabricanteIngresado;			
-				//banderaDelAlcoholBarato = 1;
-			}
-			else
-			{
-				if(precioIngresado < precioAlcoholBarato)
-				{
-					precioAlcoholBarato = precioIngresado;
-					cantidadDeAlcohol = cantidadDeUnidades;
-					fabricanteAlcoholBarato = fabricanteIngresado;
-				}
-			}
-		}
-				acumuladorDeAlcohol = acumuladorDeAlcohol + cantidadDeUnidades;
+					//if(banderaAlcoholMasBarato == 1)	
+					if(contadorDeAlcohol == 0)	//a) Del más barato de los alcohol, la cantidad de unidades y el fabricante
+					{
+						alcoholMasBarato = precioIngresado;
+						cantidadDeUnidadesAlcoholMasBarato = cantidadDeUnidadesIngresadas;
+						fabricanteDeAlcoholMasBarato = fabricanteIngresado;
+						//banderaAlcoholMasBarato = 0;
+					}	
+					else
+					{
+						if(precioIngresado < alcoholMasBarato)
+						{
+							alcoholMasBarato = precioIngresado;
+							cantidadDeUnidadesAlcoholMasBarato = cantidadDeUnidadesIngresadas;
+							fabricanteDeAlcoholMasBarato = fabricanteIngresado;
+						}
+					}
+				acumuladorDeUnidadesAlcohol = acumuladorDeUnidadesAlcohol + cantidadDeUnidadesIngresadas;
 				contadorDeAlcohol++;
 				break;
 			case "jabon":
-				acumuladorDeJabon = acumuladorDeJabon + cantidadDeUnidades;
+				acumuladorDeUnidadesDeJabón = acumuladorDeUnidadesDeJabón + cantidadDeUnidadesIngresadas;
 				contadorDeJabon++;
 				break;
 			case "barbijo":
-				acumuladorDeBarbijo = acumuladorDeBarbijo + cantidadDeUnidades;
+				acumuladorDeUnidadesDeBarbijo = acumuladorDeUnidadesDeBarbijo + cantidadDeUnidadesIngresadas;
 				contadorDeBarbijo++;
 				break;
-
-		}	//Dentro del while determino cual producto tiene mas unidades
-
-	}	//Fin de while
-
-		//Fuera del while determino la consigna de la B)
-	if(acumuladorDeAlcohol > acumuladorDeJabon && acumuladorDeAlcohol > acumuladorDeBarbijo)
+		
+		}//Fin del switch
+	} // FIN del while
+	
+		//Se comprueba quien tiene mas unidades para el ejercicio b
+	if(acumuladorDeUnidadesAlcohol > acumuladorDeUnidadesDeJabón && acumuladorDeUnidadesAlcohol > acumuladorDeUnidadesDeBarbijo)
 	{
-		tipoMasCantidad = "alcohol";
-		promedioConMasUnidades = acumuladorDeAlcohol / contadorDeAlcohol;
+		promedioConMasUnidades = acumuladorDeUnidadesAlcohol / contadorDeAlcohol;
+		tipoDeProductoConMasUnidades = "Alcohol";
 	}
 	else
 	{
-		if(acumuladorDeJabon > acumuladorDeBarbijo)	//uh la puta madre
+		if(acumuladorDeUnidadesDeJabón > acumuladorDeUnidadesDeBarbijo)
 		{
-			tipoMasCantidad = "jabon";
-			promedioConMasUnidades = acumuladorDeJabon / contadorDeJabon;
+			promedioConMasUnidades = acumuladorDeUnidadesDeJabón / contadorDeJabon;
+			tipoDeProductoConMasUnidades = "Jabon";
 		}
 		else
 		{
-			tipoMasCantidad = "barbijo";
-			promedioConMasUnidades = acumuladorDeBarbijo / contadorDeBarbijo;
+			promedioConMasUnidades = acumuladorDeUnidadesDeBarbijo / contadorDeBarbijo;
+			tipoDeProductoConMasUnidades = "Barbijo";
 		}
 	}
 
-	console.log("")
-	console.log("El tipo es " + tipoMasCantidad + " y el promedio es: " + promedioConMasUnidades);
-	console.log("La cantidad de jabones en total son: " + acumuladorDeJabon);
-
-
-
-
+	console.log("A- El alcohol mas barato tiene un precio de: $" + alcoholMasBarato + ", la cantidad de unidades que hay son: " + cantidadDeUnidadesAlcoholMasBarato + " y su fabricante es: " + fabricanteDeAlcoholMasBarato);
+	console.log("B- El tipo de producto que tiene mas unidades es: " + tipoDeProductoConMasUnidades + " con un promedio por compra de: $" + promedioConMasUnidades);
+	console.log("C- La cantidad de unidades de jabon en total es de: " + acumuladorDeUnidadesDeJabón);
 }	//Fin del programa

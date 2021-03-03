@@ -35,30 +35,36 @@ Ejercicio 7 for;*/
 {
 	var numeroIngresado;
 	var i;
-	var contadorDivisores;
-	contadorDivisores=0;
+	var mitadNumeroIngresado
+	let contadorDivisores;
+
+	contadorDivisores = 0;
 
 	numeroIngresado=prompt("ingrese numero a verificar");
-
-
+	mitadNumeroIngresado = numeroIngresado / 2;
+	mitadNumeroIngresado = parseInt(mitadNumeroIngresado);
 
 	//for(contador=numeroIngresado-1;contador>1;contador--)
-	for(i=2;i<(numeroIngresado/2);i++)
+	for(i=0;i<(mitadNumeroIngresado);i++)
 	{
 		if(numeroIngresado%i==0)
 		{
-			//contadorDivisores++;
-			break;
+			contadorDivisores++;
 		}
 
+		if(contadorDivisores > 1)
+		{
+			break;
+		}
 	}
 
 	//if(contadorDivisores>0)
 	//if(contador!=1)
-	if(i!=((numeroIngresado/2)-1))
+	if(contadorDivisores > 1)
 	{
 		console.log("no es primo");
-	}else
+	}
+	else
 	{
 		console.log("ES primo");
 	}

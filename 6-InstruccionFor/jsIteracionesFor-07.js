@@ -1,33 +1,76 @@
-/*al presionar el botón pedir un número. mostrar los numeros divisores desde el 1 al número ingresado, 
-y mostrar la cantidad de numeros divisores encontrados.
+/*For 9 bis( pedir 10 numeros , informar el mayor de los negativos y el menor de los pares).. solo si los hay
 Julian Leandro Nieva
-Ejercicio 7 for*/
+Ejercicio 9 bis for*/
 
 function mostrar()
 {
-	let numeroIngresado;
-	let contador;
-	let contadorDivisores;
+		//Defino variables
+	let contadorNumerosIngresados
+	let	numeroIngresado;
+	let numerosNegativoMayor;
+	let numerosParesMenor;
+	let banderaNumerosNegativos;
+	let banderaNumerosPares;
 
-	contadorDivisores = 0;
+	contadorNumerosNegativoMayor = 0;
+	contadorNumerosPares = 0;
 	
-	numeroIngresado = prompt("Ingrese un numero mayor a 1");	//Le solicito al usuario que ingrese un numero
+	banderaNumerosNegativos = 0;
+	banderaNumerosPares = 0;
 
-	while(isNaN(numeroIngresado) == true || numeroIngresado < 1)	//Se valida el numero
+	for(contadorNumerosIngresados = 0; contadorNumerosIngresados < 10; contadorNumerosIngresados++)	//Se inicia el for si el contador es menor a 10
 	{
-		numeroIngresado = prompt ("Error. Por favor ingrese un numero mayor a 1");
-
-	}
-	numeroIngresado = parseInt(numeroIngresado);
-
-	for(contador = 0 ;contador < numeroIngresado ; contador++)	//Se inicia el for
-	{
-		if (numeroIngresado % contador == 0)
+		numeroIngresado = prompt("Ingrese un numero");	//Se le solicita al usuario que ingrese un numero
+		numeroIngresado = parseInt(numeroIngresado);
+		while(isNaN(numeroIngresado) == true)	//Se valida el numero
 		{
-			console.log(contador);
-			contadorDivisores++;
+			numeroIngresado = prompt("Error. Por favor ingrese un numero valido");
+			numeroIngresado = parseInt(numeroIngresado);
 		}
+
+		if(numeroIngresado < 0)	//Se informa el mayor de los numero negativos
+		{
+			if(banderaNumerosNegativos == 0)
+			{
+				numerosNegativoMayor = numeroIngresado;
+				banderaNumerosNegativos = 1;
+			}
+			else
+			{
+				if(numeroIngresado > numerosNegativoMayor)
+				{
+					numerosNegativoMayor = numeroIngresado;
+				}
+			}
+		}
+
+		if(numeroIngresado % 2 == 0 )	//Se informa el numero menor de los pares
+		{
+			if(banderaNumerosPares == 0)	
+			{
+				numerosParesMenor = numeroIngresado;
+				banderaNumerosPares = 1;
+			}
+			else
+			{
+				if(numeroIngresado < numerosParesMenor)
+				{
+					numerosParesMenor = numeroIngresado;
+				}
+			}
+		}
+	} //Fin del for
+
+	if (banderaNumerosPares == 0)
+	{
+		numerosParesMenor = "No hay numero pares";
+	}
+	
+	if(banderaNumerosNegativos == 0)
+	{
+		numerosNegativoMayor = "No hay numeros negativos";
 	}
 
-	alert("Los numeros divisores encontrados del numero " + numeroIngresado + " son en total: " + contadorDivisores);
+	console.log(numerosParesMenor);
+	console.log(numerosNegativoMayor);
 }//FIN DE LA FUNCIÓN
